@@ -1,20 +1,18 @@
 #![no_std]
 
-use gstd::{debug, prelude::*};
-use sails_macros::gservice;
+use telemetry_io::Executor;
+use gstd::{ActorId, prelude::*, collections::BTreeSet};
 
-struct MyService;
-
-#[gservice]
-impl MyService {
-    pub const fn new() -> Self {
-        Self
-    }
-
-    pub async fn ping(&mut self) -> bool {
-        debug!("Ping called");
-        true
-    }
+struct TelemetryExecutor {
+    watching: BTreeSet<ActorId>,
 }
 
+impl Executor for TelemetryExecutor {
+    async fn watch(&mut self, actor: ActorId) {
+        self.watching.insert(actor);
+    }
 
+    async fn stop_watch(&mut self, actor: ActorId) {
+        self.watching.remove(&actor);
+    }
+}
