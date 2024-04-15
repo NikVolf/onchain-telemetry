@@ -1,0 +1,14 @@
+[package]
+name = "event_collector"
+version = "0.1.0"
+authors = ["Nikolay Volf<nikvolf@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+gstd = { git = "https://github.com/gear-tech/gear"}
+codec = { package = "parity-scale-codec", version = "3.4.0", default-features = false, features = ["derive"] }
+gear-test-runtime = { git = "https://github.com/nikvolf/cargo-gtest" }
+gear-test-codegen = { git = "https://github.com/nikvolf/cargo-gtest" }
+
+[build-dependencies]
+gear-ext-builder = { git = "https://github.com/nikvolf/cargo-gtest" }

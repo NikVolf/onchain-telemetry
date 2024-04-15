@@ -1,7 +1,9 @@
 #![no_std]
 #![allow(async_fn_in_trait)] // no multi-threading
 
-use gstd::{ActorId, prelude::*};
+mod test_client;
+
+use gstd::{prelude::*, ActorId};
 use sails_macros::gservice;
 
 pub struct TelemetryService<E> {
@@ -11,6 +13,8 @@ pub struct TelemetryService<E> {
 pub trait Executor {
     async fn watch(&mut self, actor: ActorId);
     async fn stop_watch(&mut self, actor: ActorId);
+    async fn list_watching(&self) -> Vec<ActorId>;
+    async fn execute_all(&self);
 }
 
 impl<E> TelemetryService<E> {

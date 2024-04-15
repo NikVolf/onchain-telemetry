@@ -10,6 +10,7 @@ gstd = { git = "https://github.com/gear-tech/gear"}
 parity-scale-codec = { version = "3.6", default-features = false }
 scale-info = { version = "2.10", default-features = false }
 sails-idl-meta = { git = "https://github.com/gear-tech/sails" }
+gear-test-runtime = { git = "https://github.com/nikvolf/cargo-gtest" }
 
 [build-dependencies]
 gear-ext-builder = { git = "https://github.com/nikvolf/cargo-gtest" }
